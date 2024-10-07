@@ -162,6 +162,10 @@ class UltimaRequest(models.Model, BaseModelForm):
     )
 
     status = models.IntegerField(choices=STATUS_CHOICES, default=1, verbose_name="Статус")
+    policy_agreement = models.BooleanField(
+        verbose_name="Согласен с политикой обработки персональных данных",
+        default=False
+    )
     additional_question = models.TextField(verbose_name="Для дополнительных вопросов:", null=True, blank=True)
     description = models.TextField(verbose_name="Комментарий менеджера", null=True, blank=True)
 

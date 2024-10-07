@@ -95,6 +95,16 @@ $(document).ready(function () {
         $fieldWarningContainer.css('display', 'none');
     });
 
+    $('#radio').click(function () {
+        const $idPolicyAgreement = $('#id_policy_agreement');
+        $idPolicyAgreement.prop('checked', true);
+
+        const $fieldInputContainer = $(this).closest('.field_inline_item_container');
+        const $fieldWarningContainer = $fieldInputContainer.find('.field_item_warning_container');
+        $fieldInputContainer.removeClass('invalid');
+        $fieldWarningContainer.css('display', 'none');
+    });
+
     $('.submit_button').click(function () {
 
         let isValid = true;
@@ -134,7 +144,7 @@ $(document).ready(function () {
                             const $fieldInputContainer = $field.closest('.field_inline_item_container');
                             const $fieldWarningContainer = $fieldInputContainer.find('.field_item_warning_container');
                             $fieldInputContainer.addClass('invalid');
-                            if (["currency", "age", "investment_goal", "investment_period", "available_sum"].includes(field)) {
+                            if (["currency", "age", "investment_goal", "investment_period", "available_sum", "policy_agreement"].includes(field)) {
                                 return;
                             }
                             $fieldWarningContainer.html('');

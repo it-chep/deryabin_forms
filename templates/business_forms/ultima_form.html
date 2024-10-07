@@ -36,7 +36,8 @@
                         <br><br>БКС Ультима Private Banking — это ваш надежный партнер в безграничном мире инвестиций.
                         Мы предоставляем персональные решения для сохранения и приумножения крупного частного капитала
                         по всему миру.
-                        😉<br><br>Сайт компании - <a href="https://bcs.ru/ultima" target="_blank">https://bcs.ru/ultima</a>
+                        😉<br><br>Сайт компании - <a href="https://bcs.ru/ultima"
+                                                    target="_blank">https://bcs.ru/ultima</a>
                     </div>
                 </div>
             </div>
@@ -50,9 +51,7 @@
                                         {% if field.name != "policy_agreement" %}
                                             {{ field.label }}
                                         {% else %}
-                                            Согласен с
-                                            <a href="https://docs.google.com/document/d/1gwotwzPEN-fYGmfrnhLP1KvnhTkHmw6IK3quQukhw_8/edit"
-                                               target="_blank">политикой обработки персональных данных</a>
+                                            Согласен с политикой обработки персональных данных
                                         {% endif %}
                                         <span class="required_star">*</span>
                                     </div>
@@ -78,6 +77,18 @@
                                                             </label>
                                                         </div>
                                                     {% endfor %}
+                                                    </div>
+                                                {% elif field.name == "policy_agreement" %}
+                                                    {{ field }}
+                                                    <div class="radio-button-container">
+                                                        <div class="radio-button">
+                                                            <input type="radio" class="radio-button__input" id="radio"
+                                                                   name="radio-group">
+                                                            <label class="radio-button__label" for="radio">
+                                                                <span class="radio-button__custom"></span>
+                                                                да
+                                                            </label>
+                                                        </div>
                                                     </div>
                                                 {% else %}
                                                     {{ field }}

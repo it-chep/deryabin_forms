@@ -26,6 +26,7 @@ class UltimaRequestForm(forms.ModelForm):
             "investment_period",
             "available_sum",
             "additional_question",
+            "policy_agreement",
         )
         widgets = {
             'name': forms.TextInput(attrs={'placeholder': 'Введите ваше имя'}),
@@ -35,7 +36,8 @@ class UltimaRequestForm(forms.ModelForm):
             'investment_goal': forms.RadioSelect,
             'investment_period': forms.RadioSelect,
             'available_sum': forms.RadioSelect,
-            'additional_question': forms.TextInput(attrs={'placeholder': 'Можете задать любой вопрос'})
+            'additional_question': forms.TextInput(attrs={'placeholder': 'Можете задать любой вопрос'}),
+            'policy_agreement': forms.CheckboxInput(attrs={'style': 'display:none'})
         }
 
     def __init__(self, *args, **kwargs):
