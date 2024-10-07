@@ -1,0 +1,57 @@
+version: "3.6"
+
+services:
+
+  forms-application:
+    build: .
+    ports:
+      - "8000:8000"
+    expose:
+      - 8000
+    container_name: forms-application
+    volumes:
+      - media:/app/media
+    networks:
+      - forms-network
+    depends_on:
+      - forms-postgres
+    environment:
+      - C_FORCE_ROOT='true'
+      - PYTHONUNBUFFERED=1
+      - LOCAL_PYTEST=1
+      - DB_USER=${DB_USER}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+      - DB_PORT=${DB_PORT}
+      - DB_HOST=${DB_HOST}
+      - DEBUG=${DEBUG}
+      - ENVIRONMENT_TYPE=docker
+
+  forms-postgres:
+    image: postgres:14.8
+    shm_size: 1g
+    container_name: forms-postgres
+    command: [ "postgres", "-c", "log_statement=all" ]
+    networks:
+      - forms-network
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_INITDB_WALDIR=/var/log/pg_logs
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_DB=${DB_NAME}
+    expose:
+      - "5432"
+    ports:
+      - "5432:5432"
+
+volumes:
+  pg_data:
+  media:
+
+networks:
+  forms-network:
+    driver: bridge
+    ipam:
+      driver: default

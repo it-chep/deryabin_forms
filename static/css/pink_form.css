@@ -1,0 +1,39 @@
+body {
+    background-color: rgb(240, 235, 248) !important;
+}
+
+.description_container_header_cap {
+    background-color: rgb(103, 58, 183);
+    color: rgba(255, 255, 255, 1);
+}
+
+.submit_button {
+    background-color: rgb(103, 58, 183);
+}
+
+.clear_inline_container {
+    color: rgb(103, 58, 183);
+}
+
+.radio-button__input:checked + .radio-button__label .radio-button__custom {
+    background-color: rgb(103, 58, 183);
+    border-color: transparent;
+    transform: scale(0.8);
+    box-shadow: 0 0 20px rgb(103, 58, 183);
+}
+
+.radio-button__label:hover .radio-button__custom {
+    transform: scale(1.2);
+    border-color: rgb(103, 58, 183);
+    box-shadow: 0 0 20px rgb(103, 58, 183);
+}
+
+a {
+    color: rgb(103, 58, 183);
+}
+
+.datepicker tbody td.active {
+    background-color: rgb(103, 58, 183);
+    color: white;
+}
+

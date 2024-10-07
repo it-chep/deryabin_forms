@@ -1,0 +1,14 @@
+/dumps
+.env
+/media
+/staticfiles
+/shelf/
+/workspace.xml
+/httpRequests/
+/dataSources/
+/dataSources.local.xml
+__pycache__/
+*.json
+.idea/
+db.sqlite3
+/venv

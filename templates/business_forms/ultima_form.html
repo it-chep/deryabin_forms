@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_styles %}
+{% endblock %}
+
+{% block extra_scripts %}
+    <script src="{% static "js/ultima_request.js" %}"></script>
+
+{% endblock %}
+
+{% block title %}
+    Фейс-контроль клуба
+{% endblock %}
+
+{% block extra_links %}
+{% endblock %}
+
+{% block content %}
+    <form action="{% url "ultima_form" %}" method="post">
+        {% csrf_token %}
+        <div class="form-container">
+            <div class="header_image_container">
+                <img src="{{ business_form_settings.photo.url }}">
+            </div>
+            <div class="description_container">
+                <div class="description_container_header_cap"></div>
+                <div class="description_container_header_container">
+                    <div class="description_container_header">
+                        <div class="description_container_header_text" dir="auto" role="heading" aria-level="1">
+                            Приветствую Вас!
+                        </div>
+                    </div>
+                    <div class="description_container_header_body" dir="auto">Меня зовут Дерябин Сергей, я Директор по
+                        работе с состоятельными клиентами у крупнейшего брокера России.
+                        <br><br>БКС Ультима Private Banking — это ваш надежный партнер в безграничном мире инвестиций.
+                        Мы предоставляем персональные решения для сохранения и приумножения крупного частного капитала
+                        по всему миру.
+                        😉<br><br>Сайт компании - <a href="https://bcs.ru/ultima" target="_blank">https://bcs.ru/ultima</a>
+                    </div>
+                </div>
+            </div>
+            <div class="field_list" role="list">
+                {% for field in ultima_form %}
+                    <div class="field_item_container" role="listitem">
+                        <div class="field_inline_item_container" id="field_inline_item_container_{{ field.name }}">
+                            <div class="field_item_label_container">
+                                <div class="field_item_label">
+                                    <div class="field_item_label_text">
+                                        {% if field.name != "policy_agreement" %}
+                                            {{ field.label }}
+                                        {% else %}
+                                            Согласен с
+                                            <a href="https://docs.google.com/document/d/1gwotwzPEN-fYGmfrnhLP1KvnhTkHmw6IK3quQukhw_8/edit"
+                                               target="_blank">политикой обработки персональных данных</a>
+                                        {% endif %}
+                                        <span class="required_star">*</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field_item_input_container">
+                                <div class="field_item_input">
+                                    <div class="field_item_input_inline">
+                                        <div class="input_container">
+                                            <div class="radio-button-container">
+                                                {% if field.name == "age" or field.name == "investment_goal" or field.name == "investment_period" or field.name == "available_sum" %}
+                                                    {% for value, label in field.field.choices %}
+                                                        <div class="radio-button">
+                                                            <input type="radio" class="radio-button__input"
+                                                                   id="{{ field.name }}_{{ value }}"
+                                                                   name="{{ field.name }}" value="{{ value }}"
+                                                                   {% if field.value == value %}checked{% endif %}>
+
+                                                            <label class="radio-button__label"
+                                                                   for="{{ field.name }}_{{ value }}">
+                                                                <span class="radio-button__custom"></span>
+                                                                {{ label }}
+                                                            </label>
+                                                        </div>
+                                                    {% endfor %}
+                                                    </div>
+                                                {% else %}
+                                                    {{ field }}
+                                                {% endif %}
+                                            <div class="line"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field_item_warning_container">
+                                <div class="field_item_warning">
+                                    <img src="{% static "img/warning.svg" %}">
+                                    <span class="warning_text">Это обязательный вопрос.</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                {% endfor %}
+            </div>
+            <div class="buttons_container">
+                <div class="buttons_inline_container">
+                    <div class="submit_container">
+                        <div class="submit_button" role="button">
+                        <span class="submit_text_container">
+                            <span class="submit_text">
+                                Записаться на консультацию
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="clear_container">
+                        <div class="clear_inline_container" role="button">
+                            <span class="clear_button">
+                                <span class="clear_button_text">Очистить форму</span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+{% endblock %}
