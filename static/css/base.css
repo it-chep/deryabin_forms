@@ -39,6 +39,9 @@ a {
     color: #85bfcc !important;
 }
 
+* {
+    box-sizing: border-box;
+}
 
 .logo img {
     height: 50px;

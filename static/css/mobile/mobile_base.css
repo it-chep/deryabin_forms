@@ -1,0 +1,22 @@
+@media (max-width: 350px) {
+    .radio-button-container {
+        width: 265px;
+    }
+
+    input {
+        width: 265px;
+    }
+
+    .select2.select2-container.select2-container--default {
+        width: 265px !important;
+        top: -14px
+    }
+
+    .field_item_container {
+        height: auto;
+    }
+
+    .field_item_input_inline:has(.radio-button) {
+        top: 0;
+    }
+}
